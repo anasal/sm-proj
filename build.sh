@@ -17,7 +17,7 @@ imageid=$(sudo docker images | grep ${DOCKER_USERNAME}/http-app | grep snapshot 
 cid=$(sudo docker ps --filter="name=websrv-test" -q -a)
 if [ ! -z "$cid" ]
 then
-    sudo docker rm -f testing-app
+    sudo docker rm -f websrv-test
 fi
 
 # Run a container from the image and capture the container ID
