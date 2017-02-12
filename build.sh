@@ -5,7 +5,7 @@
 set -e
 
 # Host port mapping for testing-app
-hostport=8000
+hostport=8010
 
 echo VERSION=$(cat version.txt) > props.env
 
