@@ -8,7 +8,7 @@
 set -e
 
 # Host port mapping for deploy-app
-hostport=8010
+hostport=8020
 
 sudo docker tag ${DOCKER_USERNAME}/http-app:stable ${DOCKER_USERNAME}/http-app:latest
 cmd="sudo docker tag ${DOCKER_USERNAME}/http-app:stable ${DOCKER_USERNAME}/http-app:$VERSION"
