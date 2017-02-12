@@ -24,8 +24,8 @@ then
 fi
 
 # Run the container, name it testing-app
-echo Running the container, with --name=web-srv-test
-testing_cid=$(sudo docker run -d --name web-srv-test -p $hostport:80  $IMAGEID)
+echo Running the container, with --name=websrv-test
+testing_cid=$(sudo docker run -d --name websrv-test -p $hostport:80  $IMAGEID)
 echo "testing_cid=$testing_cid" >> props.env
 
 # Get the container IP address, and run siege engine on it for 60 seconds
