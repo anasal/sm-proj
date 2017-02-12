@@ -25,7 +25,7 @@ echo "Building docker image is over"
 #fi
 
 # Run a container from the image and capture the container ID
-cid=$(sudo docker run -d --name testing-app -p $hostport:80 ${DOCKER_USERNAME}/http-app:snapshot)
+cid=$(sudo docker run -d --name wstest -p $hostport:80 ${DOCKER_USERNAME}/http-app:snapshot)
 echo "cid=$cid" >> props.env
 echo "IMAGEID=$imageid" >> props.env
 cat props.env
