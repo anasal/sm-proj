@@ -1,4 +1,4 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
 MAINTAINER Anas Al-Selwi "s316818@stud.hioa.no"
 RUN apt-get update
 RUN apt-get install -y apache2
