@@ -30,7 +30,7 @@ echo "testing_cid=$testing_cid" >> props.env
 
 # Get the container IP address, and run siege engine on it for 60 seconds
 cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${testing_cid})
-sudo docker run --rm rufus/siege-engine  -b -t60S http://$cip:$hostport/ > output 2>&1
+sudo docker run --rm rufus/siege-engine  -b -t60S http://$cip:80/ > output 2>&1
 
 # Check service availability
 echo Checking service availability...
