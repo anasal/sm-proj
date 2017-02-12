@@ -20,7 +20,7 @@ hostport=8010
 cid=$(sudo docker ps --filter="name=websrv-test" -q -a)
 if [ ! -z "$cid" ]
 then
-    sudo docker rm -f testing-app
+    sudo docker rm -f websrv-test
 fi
 
 # Run the container, name it testing-app
@@ -31,6 +31,15 @@ echo "testing_cid=$testing_cid" >> props.env
 # Get the container IP address, and run siege engine on it for 60 seconds
 cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${testing_cid})
 sudo docker run --rm rufus/siege-engine  -b -t60S http://$cip:80/ > output 2>&1
+
+# Check Hello World is available
+if curl $cip:80 | grep -iq 'Hello World'; then
+  echo "Test passed!"
+  exit 0
+else
+  echo "Test failed!"
+  exit 1
+fi
 
 # Check service availability
 echo Checking service availability...
