@@ -7,11 +7,11 @@
 projectName = "sm-proj"
 repositoryUrl = "https://github.com/${GITHUB_USERNAME}/sm-proj.git"
 
-buildJobName = "1.build-${projectName}_GEN"
-testJobName = "2.test-${projectName}_GEN"
-releaseJobName = "3.release-${projectName}_GEN"
-viewName = "${projectName}-jobs_GEN"
-pipelineName = "${projectName}-pipeline_GEN"
+buildJobName = "1. build-${projectName}"
+testJobName = "2. test-${projectName}"
+releaseJobName = "3. release-${projectName}"
+viewName = "${projectName}-jobs"
+pipelineName = "${projectName}-pipeline"
 
 job(buildJobName) {
     logRotator(-1, 5, -1, -1)
