@@ -40,7 +40,6 @@ echo $avail
 if [ "$avail" = "100.00" ]
 then
     echo "Availability high enough"
-    sudo docker tag $IMAGEID ${DOCKER_USERNAME}/http-app:stable
     exit 0
 else
     echo "Availability too low"
@@ -51,6 +50,7 @@ fi
 sleep 5
 if curl $cip:80 | grep -iq 'Hello World'; then
   echo "Test passed!"
+  sudo docker tag $IMAGEID ${DOCKER_USERNAME}/http-app:stable
   exit 0
 else
   echo "Test failed!"
