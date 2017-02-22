@@ -14,7 +14,7 @@ sudo docker build --no-cache -t ${DOCKER_USERNAME}/http-app:snapshot .
 imageid=$(sudo docker images | grep ${DOCKER_USERNAME}/http-app | grep snapshot | awk '{print $3}')
 
 # Check if test-app is running, if so, kill it
-cid=$(sudo docker ps --filter="test-app" -q -a)
+cid=$(sudo docker ps --filter="name=test-app" -q -a)
 if [ ! -z "$cid" ]
 then
     sudo docker rm -f test-app
