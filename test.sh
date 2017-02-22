@@ -35,7 +35,6 @@ sudo docker run --rm rufus/siege-engine  -b -t60S http://$cip:80/ > output 2>&1
 # Check Hello World is available
 if curl $cip:80 | grep -iq 'Hello World'; then
   echo "Test passed!"
-  sudo docker tag $IMAGEID ${DOCKER_USERNAME}/http-app:stable
   exit 0
 else
   echo "Test failed!"
@@ -50,6 +49,7 @@ echo $avail
 if [ "$avail" = "100.00" ]
 then
     echo "Availability high enough"
+    sudo docker tag $IMAGEID ${DOCKER_USERNAME}/http-app:stable
     exit 0
 else
     echo "Availability too low"
