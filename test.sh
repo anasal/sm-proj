@@ -13,19 +13,19 @@
 #Fail on non-zero
 set -e
 
-# Host port mapping for testing-app
+# Host port mapping for test-app
 hostport=8010
 
-# Check if testing-app is running, if so, kill it
-cid=$(sudo docker ps --filter="name=websrv-test" -q -a)
+# Check if test-app is running, if so, kill it
+cid=$(sudo docker ps --filter="name=test-app" -q -a)
 if [ ! -z "$cid" ]
 then
-    sudo docker rm -f websrv-test
+    sudo docker rm -f test-app
 fi
 
 # Run the container, name it testing-app
-echo Running the container, with --name=websrv-test
-testing_cid=$(sudo docker run -d --name websrv-test -p $hostport:80  $IMAGEID)
+echo Running the container, with --name=test-app
+testing_cid=$(sudo docker run -d --name test-app -p $hostport:80  $IMAGEID)
 echo "testing_cid=$testing_cid" >> props.env
 
 # Get the container IP address, and run siege engine on it for 60 seconds
