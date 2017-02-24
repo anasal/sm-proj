@@ -19,7 +19,7 @@ cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${test_cid
 
 # Check Hello World is available
 sleep 15
-if sudo curl $cip:80 | grep -iq 'Hello World'; then
+if wget $cip:80  -q -O - | grep -iq 'Hello World'; then
   echo "Hello World Test passed!"
   sudo docker tag $IMAGEID ${DOCKER_USERNAME}-websrv:stable
   exit 0
