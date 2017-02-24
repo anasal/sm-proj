@@ -30,7 +30,7 @@ job(buildJobName) {
                     predefinedProp('GITHUB_USERNAME', '${GITHUB_USERNAME}')
                     predefinedProp('DOCKER_USERNAME', '${DOCKER_USERNAME}')
                     gitRevision(false)
-                    propertiesFile('param.env', failTriggerOnMissing = true)
+                    propertiesFile('props.env', failTriggerOnMissing = true)
                 }
             }
         }
@@ -50,7 +50,7 @@ job(testJobName) {
     steps {
         shell('./test.sh')
         environmentVariables {
-            propertiesFile('param.env')
+            propertiesFile('props.env')
         }
     }
     publishers {

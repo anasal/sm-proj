@@ -7,7 +7,7 @@ set -e
 # Host port mapping for test-app containter
 hostport=8010
 
-echo VERSION=$(cat version.txt) > param.env
+echo VERSION=$(cat version.txt) > props.env
 
 # Check if test-app is running, if so, remove it
 cid=$(sudo docker ps --filter="name=test-app" -q -a)
@@ -22,9 +22,9 @@ imageid=$(sudo docker images | grep ${DOCKER_USERNAME}-websrv | grep snapshot | 
 
 # Run a container from the image and capture the container ID
 cid=$(sudo docker run -d --name test-app -p $hostport:80 ${DOCKER_USERNAME}-websrv:snapshot)
-echo "cid=$cid" >> param.env
-echo "IMAGEID=$imageid" >> param.env
-cat param.env
+echo "cid=$cid" >> props.env
+echo "IMAGEID=$imageid" >> props.env
+cat props.env
 
 # Get the IP address of the container
 cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${cid})

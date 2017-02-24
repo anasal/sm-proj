@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Can run this script after test.sh as:
-#    env $(cat param.env | xargs) ./deploy.sh
+#    env $(cat props.env | xargs) ./deploy.sh
 
 # Stop script if a command returns a non-zero value
 set -e
