@@ -50,7 +50,7 @@ job(testJobName) {
     steps {
         shell('./test.sh')
         environmentVariables {
-            propertiesFile('props.env')
+            propertiesFile('param.env')
         }
     }
     publishers {
