@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Run this after build.sh.
-# Expects these environment variables:
-#    IMAGEID - The docker image id to test
-#    DOCKER_USERNAME - The docker username for naming repositories
-#
 # Can run this script after build.sh as:
 #    env $(cat param.env | xargs) ./test.sh
 
