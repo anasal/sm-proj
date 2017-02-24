@@ -11,12 +11,11 @@ hostport=8010
 
 # Run the container, name it test-app
 echo Running the container, with --name=test-app
-testing_cid=$(sudo docker run -d --name test-app -p $hostport:80  $IMAGEID)
-echo "testing_cid=$testing_cid" >> param.env
-cat param.env
+test_cid=$(sudo docker run -d --name test-app -p $hostport:80  $IMAGEID)
+echo "test_cid=$test_cid" >> param.env
 
 # Get the container IP address
-cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${testing_cid})
+cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${test_cid})
 
 # Check Hello World is available
 sleep 15

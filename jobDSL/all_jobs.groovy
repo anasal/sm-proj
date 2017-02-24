@@ -30,7 +30,7 @@ job(buildJobName) {
                     predefinedProp('GITHUB_USERNAME', '${GITHUB_USERNAME}')
                     predefinedProp('DOCKER_USERNAME', '${DOCKER_USERNAME}')
                     gitRevision(false)
-                    propertiesFile('props.env', failTriggerOnMissing = true)
+                    propertiesFile('param.env', failTriggerOnMissing = true)
                 }
             }
         }
