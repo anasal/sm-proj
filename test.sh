@@ -11,8 +11,6 @@
 # Stop script if a command return a non-zero value
 set -e
 
-DOCKER_USERNAME=anas
-
 # Host port mapping for test-app
 hostport=8010
 

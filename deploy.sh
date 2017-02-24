@@ -6,8 +6,6 @@
 # Stop script if a command returns a non-zero value
 set -e
 
-DOCKER_USERNAME=anas
-
 # Host port mapping for deploy-app
 hostport=8020
 
