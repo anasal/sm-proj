@@ -9,13 +9,6 @@ set -e
 # Host port mapping for test-app
 hostport=8010
 
-# Check if test-app is running, if so, remove it
-cid=$(sudo docker ps --filter="name=test-app" -q -a)
-if [ ! -z "$cid" ]
-then
-    sudo docker rm -f test-app
-fi
-
 # Run the container, name it test-app
 echo Running the container, with --name=test-app
 testing_cid=$(sudo docker run -d --name test-app -p $hostport:80  $IMAGEID)
