@@ -1,15 +1,16 @@
 #!/bin/bash
-# Build script for webserver
+# Build script for web server
 
-#Fail on non-zero
+# Stop script if a command returns non-zero value
 set -e
 
-# Host port mapping for testing-app
+DOCKER_USERNAME=anas
+# Host port mapping for test-app containter
 hostport=8010
 
-echo VERSION=$(cat version.txt) > props.env
+echo VERSION=$(cat version.txt) > param.env
 
-# Check if test-app is running, if so, kill it
+# Check if test-app is running, if so, remove it
 cid=$(sudo docker ps --filter="name=test-app" -q -a)
 if [ ! -z "$cid" ]
 then
@@ -17,14 +18,14 @@ then
 fi
 
 # Build the docker image for the application
-sudo docker build --no-cache -t ${DOCKER_USERNAME}/http-app:snapshot .
-imageid=$(sudo docker images | grep ${DOCKER_USERNAME}/http-app | grep snapshot | awk '{print $3}')
+sudo docker build --no-cache -t ${DOCKER_USERNAME}-websrv:snapshot .
+imageid=$(sudo docker images | grep ${DOCKER_USERNAME}-websrv | grep snapshot | awk '{print $3}')
 
 # Run a container from the image and capture the container ID
-cid=$(sudo docker run -d --name test-app -p $hostport:80 ${DOCKER_USERNAME}/http-app:snapshot)
-echo "cid=$cid" >> props.env
-echo "IMAGEID=$imageid" >> props.env
-cat props.env
+cid=$(sudo docker run -d --name test-app -p $hostport:80 ${DOCKER_USERNAME}-websrv:snapshot)
+echo "cid=$cid" >> param.env
+echo "IMAGEID=$imageid" >> param.env
+cat param.env
 
 # Get the IP address of the container
 cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${cid})
