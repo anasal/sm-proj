@@ -14,11 +14,7 @@ echo Running the container, with --name=test-app
 test_cid=$(sudo docker run -d --name test-app -p $hostport:80  $IMAGEID)
 echo "test_cid=$test_cid" >> props.env
 
-# Get the container IP address
-#cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${test_cid})
-
 # Check Hello World is available
-
 if sudo docker exec test-app cat /var/www/html/index.html | grep -iq 'Hello World'; then
   echo "Hello World Test passed!"
   sudo docker tag $IMAGEID ${DOCKER_USERNAME}-websrv:stable
