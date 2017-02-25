@@ -18,8 +18,8 @@ echo "test_cid=$test_cid" >> props.env
 cip=$(sudo docker inspect --format '{{ .NetworkSettings.IPAddress }}' ${test_cid})
 
 # Check Hello World is available
-sleep 5
-if wget $cip:80  -q -O - | grep -iq 'Hello World'; then
+
+if curl $cip | grep -iq 'Hello World'; then
   echo "Hello World Test passed!"
   sudo docker tag $IMAGEID ${DOCKER_USERNAME}-websrv:stable
   exit 0
